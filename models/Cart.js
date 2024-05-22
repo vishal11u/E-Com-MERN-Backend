@@ -9,17 +9,19 @@ const CartSchema = new mongoose.Schema(
         products: [
             {
                 productId: {
-                    type: String
+                    type: String,
+                    required: true
                 },
                 quantity: {
                     type: Number,
-                    default: 1
+                    default: 1,
+                    min: 1
                 }
             }
         ]
     },
     {
-        timestamps: true
+        timestamps: true // Automatically manage createdAt and updatedAt fields
     }
 );
 

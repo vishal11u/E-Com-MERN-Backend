@@ -9,22 +9,29 @@ const OrderSchema = new mongoose.Schema(
         products: [
             {
                 productId: {
-                    type: String
+                    type: String,
+                    required: true
                 },
                 quantity: {
                     type: Number,
-                    default: 1
+                    default: 1,
+                    min: 1
                 }
             }
         ],
         amount: {
-            type: Number, required: true
+            type: Number,
+            required: true,
+            min: 0
         },
         address: {
-            type: Object, required: true
+            type: Object,
+            required: true,
         },
         status: {
-            type: String, default: "pending"
+            type: String,
+            enum: ["pending", "processed", "shipped", "delivered", "cancelled"],
+            default: "pending"
         },
     },
     {

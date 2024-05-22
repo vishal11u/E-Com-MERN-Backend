@@ -9,11 +9,11 @@ const VerifyToken = (req, res, next) => {
         const tokenParts = authHeader.split(" ");
         if (tokenParts.length === 2 && tokenParts[0] === "Bearer") {
             const jwtToken = tokenParts[1];
-            console.log("JWT Token:", jwtToken);
+            console.log("JWK Token:", jwtToken);
 
-            jwt.verify(jwtToken, process.env.JWT_SEC, (err, user) => { // Corrected environment variable to JWT_SEC
+            jwt.verify(jwtToken, process.env.JWK_SEC, (err, user) => {
                 if (err) {
-                    console.error("JWT Verification Error:", err);
+                    console.error("JWK Verification Error:", err);
                     return res.status(403).json({ error: "Token is not valid!" });
                 }
                 req.user = user;
